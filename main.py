@@ -1,6 +1,7 @@
 from os.path import basename, splitext
 import tkinter as tk
-
+from tkinter import filedialog
+import pylab as pl
 # from tkinter import ttk
 
 
@@ -45,10 +46,50 @@ class Application(tk.Tk):
         self.bind("<Escape>", self.quit)
         self.lbl = tk.Label(self, text="Hello World")
         self.lbl.pack()
-        self.btn = tk.Button(self, text="Quit", command=self.quit)
-        self.btn.pack()
+        
         self.btn2 = tk.Button(self, text="About", command=self.about)
         self.btn2.pack()
+
+        self.fileFrame= tk.LabelFrame(self, text="Soubor")
+        self.fileFrame.pack(padx=5, pady=5, fill="x")
+        self.fileEntry = MyEntry(self.fileFrame)
+        self.fileEntry.pack(fill="x")
+        self.fileBtn = tk.Button(self.fileFrame, text="...", command=self.choseFile)
+        self.fileBtn.pack(anchor="e",fill="x")
+
+
+        self.dataVar = tk.StringVar()
+        self.rowRadio= tk.Radiobutton(self.fileFrame, text="Data jsou v řádcích", variable=self.dataVar, value="row")
+        self.rowRadio.pack(anchor="w")
+        self.columnRadio= tk.Radiobutton(self.fileFrame, text="Data jsou ve sloupcívh",variable=self.dataVar, value="column")
+        self.columnRadio.pack(anchor="w")
+
+        self.plotBtn = tk.Button(self, text="Kresli", command=self.plot)
+        self.plotBtn.pack(anchor="e",fill="x")
+
+
+
+
+        self.btn = tk.Button(self, text="Quit", command=self.quit)
+        self.btn.pack()
+
+
+
+    def choseFile(self):
+        path = filedialog.askopenfilename()
+        self.fileEntry.value = path
+
+    def plot(self):
+        with open(self.fileEntry.value) as f:
+            if self.dataVar.get() == "row":
+                line = f.readline()
+                x= line.split(";")
+                line = f.readline()
+                y= line.split(";")
+                x = [ float(item.replace(",",".")) for item in x]
+                y = [ float(item.replace(",",".")) for item in y]
+            pl.plot(x,y)
+            pl.show()
 
     def about(self):
         window = About(self)
