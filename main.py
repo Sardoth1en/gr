@@ -117,31 +117,31 @@ class Application(tk.Tk):
         self.btn.pack()
 
 
-        self.mainMenu = tk.Menu(self)
-        self.fileMenu = tk.Menu(self.mainMenu)
-        self.editMenu = tk.Menu(self.mainMenu)
-        self.helpMenu = tk.Menu(self.mainMenu)
-        self.config(menu=self.mainMenu)
+        #self.mainMenu = tk.Menu(self)
+        #self.fileMenu = tk.Menu(self.mainMenu)
+        #self.editMenu = tk.Menu(self.mainMenu)
+        #self.helpMenu = tk.Menu(self.mainMenu)
+        #self.config(menu=self.mainMenu)
 
-        self.mainMenu.add_cascade(Label= "Soubor" , menu=self.fileMenu)
-        self.mainMenu.add_cascade(Label= "Editovat" , menu=self.editMenu)
-        self.mainMenu.add_cascade(Label= "Napoveda" , menu=self.helpMenu)
+        #self.mainMenu.add_cascade(Label= "Soubor" , menu=self.fileMenu)
+       # self.mainMenu.add_cascade(Label= "Editovat" , menu=self.editMenu)
+        #self.mainMenu.add_cascade(Label= "Napoveda" , menu=self.helpMenu)
 
-        self.fileMenu.add_command(label="otevřít", command= self.choseFile)
-        self.fileMenu.add_separator()
-        self.fileMenu.add_command(label="konec", command=self.quit)
+        #self.fileMenu.add_command(label="otevřít", command= self.choseFile)
+        #self.fileMenu.add_separator()
+        #self.fileMenu.add_command(label="konec", command=self.quit)
 
-        self.editMenu.add_cascade(label="ovoce",menu=self.ovoce)
-        self.editMenu.add_cascade(label="zelenina",menu=self.zelenina)
-
-
-        self.ovovce.add_command(label="višen")
-        self.ovovce.add_command(label="jablko")
-        self.ovovce.add_command(label="hruška")
-        self.ovovce.add_command(label="malina")
+        #self.editMenu.add_cascade(label="ovoce",menu=self.ovoce)
+        #self.editMenu.add_cascade(label="zelenina",menu=self.zelenina)
 
 
-        self.zelenina.add_checkbutton(label="mrkev")
+        #self.ovovce.add_command(label="višen")
+        #self.ovovce.add_command(label="jablko")
+        #self.ovovce.add_command(label="hruška")
+        #self.ovovce.add_command(label="malina")
+
+
+        #self.zelenina.add_checkbutton(label="mrkev")
 
 
     def choseFile(self):
