@@ -117,6 +117,9 @@ class Application(tk.Tk):
         self.btn.pack()
 
 
+        self.maimenu = tk.Menu
+
+
 
     def choseFile(self):
         path = filedialog.askopenfilename()
